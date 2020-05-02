@@ -6,12 +6,12 @@ export default {
   /*
   ** Server keys
   */
-  // server: {
-  //   https: {
-  //     key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
-  //     cert: fs.readFileSync(path.resolve(__dirname, 'server.cert'))
-  //   }
-  // },
+  server: {
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'server.cert'))
+    }
+  },
 
   /*
   ** Headers of the page
@@ -40,6 +40,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/api.js'
   ],
   /*
   ** Nuxt.js dev-modules
