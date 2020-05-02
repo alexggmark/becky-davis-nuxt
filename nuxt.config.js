@@ -35,12 +35,13 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/scss/main.scss'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/api.js'
+    '@/plugins/api.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -74,6 +75,11 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      config.module.rules.forEach((rule) => {
+        if (rule.test.toString() === '/\\.vue$/') {
+          rule.options.loaders.scss[2].options.data = '@import "@/assets/scss/main.scss";'
+        }
+      })
     }
   }
 }

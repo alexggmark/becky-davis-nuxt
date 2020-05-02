@@ -1,16 +1,24 @@
 <template>
   <div>
-    <h1>Doccy</h1>
-    <ul>
-      <li v-for="(item, index) in data" :key="index">
-        {{ item.title }}
-      </li>
-    </ul>
+    {{ data }}
+    <welcome-tiles />
+    <content-section />
+    <content-section reversed="true" />
+    <content-section />
+    <content-section reversed="true" />
   </div>
 </template>
 
 <script>
+import WelcomeTiles from '@/components/WelcomeTiles'
+import ContentSection from '@/components/ContentSection'
+
 export default {
+  layout: 'default',
+  components: {
+    WelcomeTiles,
+    ContentSection
+  },
   computed: {
     data () {
       return this.$store.state.data
@@ -21,7 +29,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
