@@ -1,16 +1,15 @@
 <template>
   <section class="welcome">
     <div class="welcome__container">
-      <div class="welcome__selfie" />
-      <div v-for="item in items" :key="item.title" class="welcome__tile">
+      <div v-for="item in apiData" :key="item.title" class="welcome__tile">
         <div class="welcome__tile--inner">
           <h3 class="welcome__callout">
-            Branding
+            {{ item.navigationtitle }}
           </h3>
           <h2 class="welcome__title">
             {{ item.title }}
           </h2>
-          <img class="welcome__image" :src="item.img">
+          <img class="welcome__image" :src="item.image.url">
         </div>
         <div class="welcome__button shadow">
           <img src="@/assets/img/next.svg">
@@ -22,22 +21,10 @@
 
 <script>
 export default {
-  data () {
-    return {
-      items: [
-        {
-          title: 'Brand Stores without compromise',
-          img: require('@/assets/img/comp1.png')
-        },
-        {
-          title: 'Operational Experience in Major Companies',
-          img: require('@/assets/img/cup1.png')
-        },
-        {
-          title: 'Operational Experience in Major Companies',
-          img: require('@/assets/img/pad1.png')
-        }
-      ]
+  props: {
+    apiData: {
+      type: Array,
+      required: true
     }
   }
 }
@@ -50,6 +37,7 @@ export default {
   &__container {
     @include container;
     display: flex;
+    justify-content: center;
     padding: 2rem 0;
   }
 

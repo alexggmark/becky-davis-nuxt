@@ -3,16 +3,17 @@
     <div class="content-section__container">
       <div class="content-section__content">
         <h2 class="content-section__title">
-          Operational Experience in Major Companies
+          {{ apiData.title }}
         </h2>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.</p>
+        <p>
+          {{ apiData.content }}
+        </p>
       </div>
       <div class="content-section__image">
         <div class="content-section__button shadow">
           <img src="@/assets/img/next.svg">
         </div>
-        <img v-if="reversed" class="content-section__image--inner" src="@/assets/img/mobile1.png">
-        <img v-else class="content-section__image--inner" src="@/assets/img/lamp1.png">
+        <img class="content-section__image--inner" :src="apiData.image.url" :alt="apiData.image.id">
       </div>
     </div>
   </section>
@@ -21,6 +22,10 @@
 <script>
 export default {
   props: {
+    apiData: {
+      type: Object,
+      required: true
+    },
     reversed: {
       type: String,
       default: ''
@@ -76,6 +81,7 @@ export default {
     color: $color-black;
     font-family: $font-secondary;
     font-size: 36px;
+    font-weight: 100;
     letter-spacing: 1px;
     line-height: 51px;
     margin: 1rem 0;

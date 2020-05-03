@@ -19,7 +19,5 @@ export default {
 </script>
 
 <style lang="scss">
-.default-layout {
-  color: red;
-}
+
 </style>

@@ -1,11 +1,13 @@
 <template>
   <div>
-    {{ data }}
-    <welcome-tiles />
+    <welcome-tiles :api-data="pageBlocks" />
+    <template v-for="(item, index) in contentBlocks">
+      <content-section v-if="index % 2 === 0" :key="index" :api-data="item" />
+      <content-section v-else :key="index" :api-data="item" reversed="true" />
+    </template>
+    <!-- <content-section reversed="true" />
     <content-section />
-    <content-section reversed="true" />
-    <content-section />
-    <content-section reversed="true" />
+    <content-section reversed="true" /> -->
   </div>
 </template>
 
@@ -20,12 +22,12 @@ export default {
     ContentSection
   },
   computed: {
-    data () {
-      return this.$store.state.data
+    contentBlocks () {
+      return this.$store.state.contentblocks.contentblocks.allContentblocks
+    },
+    pageBlocks () {
+      return this.$store.state.pages.pageblocks.allPageblocks
     }
-  },
-  created () {
-    this.$store.dispatch('getData')
   }
 }
 </script>

@@ -1,28 +1,12 @@
-export const state = () => ({
-  data: []
-})
-
-export const mutations = {
-  updateData (state, newValue) {
-    console.log('Mutating')
-    state.data = newValue.allContentblocks
-  }
-}
-
 export const actions = {
-  getData ({ commit }) {
-    this.$apiRequest({
-      query: `
-        query MyQuery {
-          allContentblocks {
-            title
-            content
-          }
-        }
-      `
-    })
-      .then((res) => {
-        commit('updateData', res)
-      })
+  nuxtServerInit ({ dispatch }) {
+    // This broke because of regular arrow function
+    // const promisedItem = store => dispatch(`${store}/fetchAndSet`)
+
+    return Promise.all([
+      dispatch('navigation/fetchAndSet'),
+      dispatch('pages/fetchAndSet'),
+      dispatch('contentblocks/fetchAndSet')
+    ])
   }
 }
