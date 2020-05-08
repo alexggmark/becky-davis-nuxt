@@ -1,19 +1,21 @@
 <template>
   <section class="welcome">
     <div class="welcome__container">
-      <div v-for="item in apiData" :key="item.title" class="welcome__tile">
-        <div class="welcome__tile--inner">
-          <h3 class="welcome__callout">
-            {{ item.navigationtitle }}
-          </h3>
-          <h2 class="welcome__title">
-            {{ item.title }}
-          </h2>
-          <img class="welcome__image" :src="item.image.url">
-        </div>
-        <div class="welcome__button shadow">
-          <img src="@/assets/img/next.svg">
-        </div>
+      <div v-for="item in pageBlocks" :key="item.title" class="welcome__tile">
+        <nuxt-link :to="'/page/' + item.navigationtitle.toLowerCase()">
+          <div class="welcome__tile--inner">
+            <h3 class="welcome__callout">
+              {{ item.navigationtitle }}
+            </h3>
+            <h2 class="welcome__title">
+              {{ item.title }}
+            </h2>
+            <img class="welcome__image" :src="item.image.url">
+          </div>
+          <div class="welcome__button shadow">
+            <img src="@/assets/img/next.svg">
+          </div>
+        </nuxt-link>
       </div>
     </div>
   </section>
@@ -21,10 +23,11 @@
 
 <script>
 export default {
-  props: {
-    apiData: {
-      type: Array,
-      required: true
+  computed: {
+    pageBlocks () {
+      return this.$store.state.pages.pageblocks.allPageblocks.filter((item) => {
+        return item.blockincarousel === true
+      })
     }
   }
 }

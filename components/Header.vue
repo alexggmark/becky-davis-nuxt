@@ -5,15 +5,12 @@
         ///
       </div>
       <div class="header__logo">
-        becky<span class="header__logo--highlight">davis</span>
+        <nuxt-link to="/">
+          becky<span class="header__logo--highlight">davis</span>
+        </nuxt-link>
       </div>
       <div class="header__navigation">
-        <ul>
-          <li><a href="#">Branding</a></li>
-          <li><a href="#">Operations</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Portfolio</a></li>
-        </ul>
+        <navigation-block />
         <button class="header__contact">
           Contact me
         </button>
@@ -26,8 +23,12 @@
 </template>
 
 <script>
-export default {
+import NavigationBlock from '@/components/navigation'
 
+export default {
+  components: {
+    NavigationBlock
+  }
 }
 </script>
 
@@ -39,7 +40,6 @@ export default {
   width: 100%;
 
   &__container {
-    // @include container
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -52,6 +52,11 @@ export default {
     font-family: $font-secondary;
     font-size: 21px;
     letter-spacing: 1.5px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     &--highlight {
       color: $color-primary;
