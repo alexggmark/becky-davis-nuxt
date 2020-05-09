@@ -1,5 +1,6 @@
 <template>
   <div>
+    Test
     {{ $store.state.contentblocks.contentblocks.allContentblocks }}
     <welcome-tiles />
     <template v-for="(item, index) in contentBlocks">
