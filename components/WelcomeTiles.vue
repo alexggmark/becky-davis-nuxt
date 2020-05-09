@@ -1,7 +1,7 @@
 <template>
   <section class="welcome">
-    <div class="welcome__container">
-      <div v-for="item in pageBlocks" :key="item.navigation" class="welcome__tile">
+    <swiper class="welcome__container" :options="swiperOption">
+      <swiper-slide v-for="item in pageBlocks" :key="item.navigation" class="welcome__tile">
         <nuxt-link
           :key="item.navigation"
           class="welcome__link"
@@ -21,13 +21,39 @@
             <img src="@/assets/img/next.svg">
           </div>
         </nuxt-link>
-      </div>
-    </div>
+      </swiper-slide>
+    </swiper>
   </section>
 </template>
 
 <script>
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
+
 export default {
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  directives: {
+    swiper: directive
+  },
+  data () {
+    return {
+      swiperOption: {
+        slidesPerView: 1,
+        spaceBetween: 25,
+        breakpoints: {
+          950: {
+            slidesPerView: 3
+          },
+          560: {
+            slidesPerView: 2
+          }
+        }
+      }
+    }
+  },
   computed: {
     pageBlocks () {
       const pageData = this.$store.state.pages.pageblocks.allPageblocks.filter((item) => {
@@ -45,10 +71,11 @@ export default {
 
 .welcome {
   &__container {
-    @include container;
     display: flex;
     justify-content: center;
+    margin: 0 auto;
     padding: 2rem 0;
+    width: calc(100% - 2rem);
   }
 
   &__link {
@@ -61,7 +88,7 @@ export default {
     border-radius: 3px;
     color: $color-white;
     display: flex;
-    margin: 0 1.1rem;
+    // margin: 0 1.1rem;
     position: relative;
     text-align: center;
     width: 25%;
@@ -123,6 +150,12 @@ export default {
     color: $color-white;
     margin: 0 1.1rem;
     width: 25%;
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    &__container {
+      width: $width-md;
+    }
   }
 }
 </style>
