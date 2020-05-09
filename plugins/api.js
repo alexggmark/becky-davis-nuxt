@@ -12,6 +12,9 @@ export default ({ app }, inject) => {
       }
     })
 
+    console.log('API TOKEN')
+    console.log(process.env.DATOCMS_API_TOKEN)
+
     return client.request(query, variables)
   })
 }
