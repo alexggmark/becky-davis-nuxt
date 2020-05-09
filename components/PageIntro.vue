@@ -51,7 +51,7 @@ export default {
   }
 
   &__image {
-    max-width: 200px;
+    max-width: 300px;
   }
 
   &__image-block {
@@ -88,7 +88,7 @@ export default {
     }
 
     &__content-text {
-      padding: 1rem 4rem;
+      padding: 0 4rem;
     }
   }
 }
