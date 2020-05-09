@@ -1,6 +1,6 @@
 <template>
   <section class="welcome">
-    <swiper class="welcome__container" :options="swiperOption">
+    <swiper :options="swiperOption" class="welcome__container">
       <swiper-slide v-for="item in pageBlocks" :key="item.navigation" class="welcome__tile">
         <nuxt-link
           :key="item.navigation"
@@ -74,8 +74,11 @@ export default {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    padding: 2rem 0;
     width: calc(100% - 4rem);
+  }
+
+  .swiper-container {
+    padding: 2rem 0;
   }
 
   &__link {
@@ -88,7 +91,6 @@ export default {
     border-radius: 3px;
     color: $color-white;
     display: flex;
-    // margin: 0 1.1rem;
     min-height: 420px;
     position: relative;
     text-align: center;
