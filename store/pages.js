@@ -17,7 +17,11 @@ export const actions = {
           allPageblocks {
             navigationtitle,
             title,
+            introtext,
             content,
+            colour {
+              hex
+            },
             image {
               id,
               url

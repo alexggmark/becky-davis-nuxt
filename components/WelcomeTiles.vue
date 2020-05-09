@@ -1,8 +1,12 @@
 <template>
   <section class="welcome">
     <div class="welcome__container">
-      <div v-for="item in pageBlocks" :key="item.title" class="welcome__tile">
-        <nuxt-link :to="'/page/' + item.navigationtitle.toLowerCase()">
+      <div v-for="item in pageBlocks" :key="item.navigation" class="welcome__tile">
+        <nuxt-link
+          :key="item.navigation"
+          class="welcome__link"
+          :to="'/page/' + item.navigationtitle.toLowerCase()"
+        >
           <div class="welcome__tile--inner">
             <h3 class="welcome__callout">
               {{ item.navigationtitle }}
@@ -10,7 +14,8 @@
             <h2 class="welcome__title">
               {{ item.title }}
             </h2>
-            <img class="welcome__image" :src="item.image.url">
+            <img v-if="item.colour" class="welcome__image" :src="item.image.url" :style="{ backgroundColor: item.colour.hex }">
+            <img v-else class="welcome__image" :src="item.image.url" :style="{ backgroundColor: '#fddddf' }">
           </div>
           <div class="welcome__button shadow">
             <img src="@/assets/img/next.svg">
@@ -25,9 +30,11 @@
 export default {
   computed: {
     pageBlocks () {
-      return this.$store.state.pages.pageblocks.allPageblocks.filter((item) => {
+      const pageData = this.$store.state.pages.pageblocks.allPageblocks.filter((item) => {
         return item.blockincarousel === true
       })
+
+      return pageData
     }
   }
 }
@@ -42,6 +49,10 @@ export default {
     display: flex;
     justify-content: center;
     padding: 2rem 0;
+  }
+
+  &__link {
+    text-decoration: none;
   }
 
   &__tile {
