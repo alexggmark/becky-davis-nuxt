@@ -71,7 +71,7 @@ export default {
   }
 
   @media screen and (max-width: $breakpoint-md) {
-    background: none;
+    background: none!important;
   }
 
   @media screen and (min-width: $breakpoint-md) {
@@ -88,7 +88,7 @@ export default {
     }
 
     &__content-text {
-      padding: 2rem 4rem;
+      padding: 1rem 4rem;
     }
   }
 }

@@ -14,7 +14,7 @@
             <h2 class="welcome__title">
               {{ item.title }}
             </h2>
-            <img v-if="item.colour" class="welcome__image" :src="item.image.url" :style="{ backgroundColor: item.colour.hex }">
+            <img v-if="item.colour.hex" class="welcome__image" :src="item.image.url" :style="{ backgroundColor: item.colour.hex }">
             <img v-else class="welcome__image" :src="item.image.url" :style="{ backgroundColor: '#fddddf' }">
           </div>
           <div class="welcome__button shadow">
@@ -52,6 +52,7 @@ export default {
   }
 
   &__link {
+    display: flex;
     text-decoration: none;
   }
 
@@ -91,7 +92,7 @@ export default {
   }
 
   &__image {
-    height: 190px;
+    height: 220px;
     object-fit: cover;
     width: 100%;
   }
