@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ $store.state.contentblocks.contentblocks.allContentblocks }}
     <welcome-tiles />
     <template v-for="(item, index) in contentBlocks">
       <content-section v-if="index % 2 === 0" :key="index" :api-data="item" />
