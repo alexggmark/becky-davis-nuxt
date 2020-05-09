@@ -63,7 +63,5 @@ export default {
     ** You can extend webpack config here
     */
 
-  },
-
-  buildDir: 'dist'
+  }
 }
