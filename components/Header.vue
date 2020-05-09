@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import NavigationBlock from '@/components/navigation'
+import NavigationBlock from '@/components/Navigation'
 
 export default {
   components: {
