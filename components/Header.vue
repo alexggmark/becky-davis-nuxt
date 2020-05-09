@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header__container">
       <div class="header__burger-menu">
-        ///
+        <img src="@/assets/img/burger.svg" @click="openMobileMenu">
       </div>
       <div class="header__logo">
         <nuxt-link to="/">
@@ -16,8 +16,14 @@
         </button>
       </div>
       <div class="header__burger-contact">
-        ///
+        <img src="@/assets/img/contact.svg">
       </div>
+    </div>
+    <div ref="mobilemenu" class="header__mobile-menu">
+      <div class="header__mobile-close" @click="openMobileMenu">
+        X
+      </div>
+      <navigation-block />
     </div>
   </header>
 </template>
@@ -28,6 +34,15 @@ import NavigationBlock from '@/components/navigation'
 export default {
   components: {
     NavigationBlock
+  },
+  methods: {
+    openMobileMenu () {
+      if (this.$refs.mobilemenu.classList.contains('is-active')) {
+        this.$refs.mobilemenu.classList.remove('is-active')
+        return
+      }
+      this.$refs.mobilemenu.classList.add('is-active')
+    }
   }
 }
 </script>
@@ -104,10 +119,52 @@ export default {
 
   &__burger-menu {
     display: block;
+    width: 25px;
   }
 
   &__burger-contact {
     display: block;
+    width: 20px;
+  }
+
+  &__mobile-menu {
+    background-color: rgba(255, 255, 255, 0.95);
+    left: -2000px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    transition: left 0.5s ease;
+    z-index: 9999;
+
+    &.is-active {
+      left: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    a {
+      color: $color-black;
+      text-decoration: none;
+    }
+
+    li {
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #aaaaaa;
+      }
+    }
+  }
+
+  &__mobile-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
   }
 
   @media screen and (min-width: $breakpoint-md) {
@@ -120,6 +177,10 @@ export default {
     }
 
     &__burger-contact {
+      display: none;
+    }
+
+    &__mobile-menu {
       display: none;
     }
   }

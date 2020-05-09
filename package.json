@@ -5,7 +5,7 @@
   "author": "Alex Gronmark",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt --https",
     "build": "nuxt build --spa",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -29,6 +29,7 @@
     "eslint-plugin-nuxt": ">=0.4.2",
     "node-sass": "^4.14.0",
     "sass-loader": "^8.0.2",
-    "stylelint": "^10.1.0"
+    "stylelint": "^10.1.0",
+    "vue-svg-loader": "^0.16.0"
   }
 }

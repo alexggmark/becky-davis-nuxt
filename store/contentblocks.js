@@ -25,8 +25,6 @@ export const actions = {
       `
     })
 
-    console.log(apiData)
-
     commit('set', apiData)
   }
 }

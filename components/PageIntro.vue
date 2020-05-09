@@ -70,6 +70,10 @@ export default {
     width: 100%;
   }
 
+  &__content-text {
+    font-style: italic;
+  }
+
   @media screen and (max-width: $breakpoint-md) {
     background: none!important;
   }
@@ -88,7 +92,14 @@ export default {
     }
 
     &__content-text {
-      padding: 0 4rem;
+      @include shadow;
+      background-color: $color-white;
+      // color: $color-white;
+      // border: 1px solid $color-tertiary;
+      // border-radius: 5px;
+      // font-size: 14px;
+      margin-left: 2rem;
+      padding: 2rem;
     }
   }
 }

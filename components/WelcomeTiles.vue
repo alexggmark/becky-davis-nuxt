@@ -75,7 +75,7 @@ export default {
     justify-content: center;
     margin: 0 auto;
     padding: 2rem 0;
-    width: calc(100% - 2rem);
+    width: calc(100% - 4rem);
   }
 
   &__link {
@@ -89,6 +89,7 @@ export default {
     color: $color-white;
     display: flex;
     // margin: 0 1.1rem;
+    min-height: 420px;
     position: relative;
     text-align: center;
     width: 25%;
@@ -112,9 +113,9 @@ export default {
   &__title {
     color: $color-white;
     font-family: $font-tertiary;
-    font-size: 19px;
+    font-size: 24px;
     letter-spacing: 1.5px;
-    line-height: 21px;
+    line-height: 27px;
     margin: 1.8rem 0;
   }
 
@@ -152,9 +153,21 @@ export default {
     width: 25%;
   }
 
+  @media screen and (min-width: $breakpoint-sm) {
+    &__tile {
+      min-height: 380px;
+    }
+
+    &__title {
+      font-size: 19px;
+      letter-spacing: 1.5px;
+      line-height: 21px;
+    }
+  }
+
   @media screen and (min-width: $breakpoint-lg) {
     &__container {
-      width: $width-md;
+      width: calc(#{$width-md} + 5rem);
     }
   }
 }
