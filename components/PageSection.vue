@@ -7,7 +7,7 @@
             {{ apiData.title }}
           </h1>
 
-          <p>{{ apiData.content }}</p>
+          <p v-html="render(apiData.content)" />
         </div>
       </div>
     </div>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import MarkdownIt from 'markdown-it'
+
 export default {
   props: {
     apiData: {
@@ -27,6 +29,12 @@ export default {
       if (!this.apiData.pageimage) { return this.apiData.image }
 
       return this.apiData.pageimage
+    }
+  },
+  methods: {
+    render (text) {
+      const md = new MarkdownIt()
+      return md.render(text)
     }
   }
 }
@@ -66,6 +74,13 @@ export default {
 
   &__content {
     padding-bottom: 2rem;
+
+    img {
+      display: block;
+      margin: 1rem 0;
+      margin: 0 auto;
+      max-width: 100%;
+    }
   }
 
   &__title {
@@ -82,6 +97,14 @@ export default {
     &__banner {
       padding-top: 20%;
     }
+
+      &__content {
+        padding-bottom: 2rem;
+
+        img {
+          max-width: 50%;
+        }
+      }
 
     &__container-inner {
       padding: 5rem 5rem;
