@@ -3,34 +3,30 @@
     <div class="footer__container">
       <div class="footer__column">
         <div class="footer__title">
-          Col 1
+          Main Menu
         </div>
-        <ul class="footer__links">
-          <li><a href="#">Branding</a></li>
-          <li><a href="#">Operations</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Portfolio</a></li>
+        <navigation-block />
+      </div>
+      <div class="footer__column">
+        <div class="footer__title">
+          Social
+        </div>
+        <ul>
+          <li v-for="(item, index) in footerSocialMenu" :key="'social' + index">
+            <a :href="item.url" target="_blank">
+              {{ item.navigation }}
+            </a>
+          </li>
         </ul>
       </div>
       <div class="footer__column">
         <div class="footer__title">
-          Col 1
+          Contact
         </div>
-        <ul class="footer__links">
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">YouTube</a></li>
-          <li><a href="#">Instagram</a></li>
-        </ul>
-      </div>
-      <div class="footer__column">
-        <div class="footer__title">
-          Col 1
-        </div>
-        <ul class="footer__links">
-          <li><a href="#">(319) 555-0115</a></li>
-          <li><a href="#">john.gardner@example.com</a></li>
-          <li><a href="#">Marjorie Richards</a></li>
+        <ul>
+          <li v-for="(item, index) in footerContactMenu" :key="'contact' + index">
+            {{ item.contactinfo }}
+          </li>
         </ul>
       </div>
     </div>
@@ -38,8 +34,20 @@
 </template>
 
 <script>
-export default {
+import NavigationBlock from '@/components/Navigation'
 
+export default {
+  components: {
+    NavigationBlock
+  },
+  computed: {
+    footerSocialMenu () {
+      return this.$store.state.navigation.navigationsocial.allNavigationsocials
+    },
+    footerContactMenu () {
+      return this.$store.state.navigation.navigationcontact.allContactinfos
+    }
+  }
 }
 </script>
 
@@ -71,7 +79,7 @@ export default {
     padding: 0.75rem 0;
   }
 
-  &__links {
+  ul {
     list-style-type: none;
     padding-left: 0;
 

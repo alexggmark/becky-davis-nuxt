@@ -4,7 +4,6 @@ export const state = () => ({
 
 export const mutations = {
   set (state, apiData) {
-    console.log(apiData)
     state.pageblocks = apiData
   }
 }
