@@ -11,9 +11,11 @@
       </div>
       <div class="header__navigation">
         <navigation-block />
-        <button class="header__contact">
-          Contact me
-        </button>
+        <nuxt-link to="/contact">
+          <button class="header__contact">
+            Contact me
+          </button>
+        </nuxt-link>
       </div>
       <div class="header__burger-contact">
         <img src="@/assets/img/contact.svg">
@@ -111,6 +113,7 @@ export default {
     border: 0;
     border-radius: 3px;
     color: $color-white;
+    cursor: pointer;
     font-family: $font-secondary;
     font-size: 14px;
     margin-left: 1.5rem;
