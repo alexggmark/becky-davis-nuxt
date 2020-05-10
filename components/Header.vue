@@ -113,7 +113,7 @@ export default {
     color: $color-white;
     font-family: $font-secondary;
     font-size: 14px;
-    margin-left: 2.5rem;
+    margin-left: 1.5rem;
     padding: 0.75rem 1.5rem;
   }
 

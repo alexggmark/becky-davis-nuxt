@@ -33,12 +33,10 @@ export default {
       })
     }
   },
-  mounted () {
-    console.log(this.handle)
-  }
+  transition: 'tran'
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import '@/assets/scss/main.scss';
 </style>

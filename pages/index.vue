@@ -1,6 +1,8 @@
 <template>
   <div>
-    <welcome-tiles />
+    <transition name="trancomp">
+      <welcome-tiles />
+    </transition>
     <template v-for="(item, index) in contentBlocks">
       <content-section v-if="index % 2 === 0" :key="index" :api-data="item" />
       <content-section v-else :key="index" :api-data="item" reversed="true" />
@@ -22,6 +24,11 @@ export default {
     contentBlocks () {
       return this.$store.state.contentblocks.contentblocks.allContentblocks
     }
-  }
+  },
+  transition: 'tran'
 }
 </script>
+
+<style lang="scss">
+@import '@/assets/scss/main.scss';
+</style>

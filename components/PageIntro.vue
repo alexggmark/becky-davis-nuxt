@@ -5,10 +5,12 @@
         <img :src="apiData.image.url" class="page-intro__image">
       </div>
       <div class="page-intro__content-block">
-        <p class="page-intro__content-text">
-          {{ apiData.introtext }}
-          {{ introText }}
-        </p>
+        <div class="page-intro__content-text">
+          <h3 class="page-intro__title">
+            {{ apiData.navigationtitle }}
+          </h3>
+          <span class="page-intro__text">{{ introText }}</span>
+        </div>
       </div>
     </div>
   </section>
@@ -70,8 +72,16 @@ export default {
     width: 100%;
   }
 
-  &__content-text {
-    font-style: italic;
+  &__title {
+    border-bottom: 1px solid $color-tertiary;
+    color: $color-tertiary;
+    font-family: $font-secondary;
+    margin: 0 0 0.5rem;
+    padding: 0 0 0.5rem;
+  }
+
+  &__text {
+    line-height: 25px;
   }
 
   @media screen and (max-width: $breakpoint-md) {
@@ -96,7 +106,7 @@ export default {
       background-color: $color-white;
       // color: $color-white;
       // border: 1px solid $color-tertiary;
-      // border-radius: 5px;
+      border-radius: 5px;
       // font-size: 14px;
       margin-left: 2rem;
       padding: 2rem;
