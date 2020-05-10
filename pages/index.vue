@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>TEST</h1>
     <transition name="trancomp">
       <welcome-tiles />
     </transition>
