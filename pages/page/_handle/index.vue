@@ -32,8 +32,8 @@ export default {
         return item.navigationtitle.toLowerCase() === this.handle.toLowerCase()
       })
     }
-  },
-  transition: 'tran'
+  }
+  // transition: 'tran'
 }
 </script>
 

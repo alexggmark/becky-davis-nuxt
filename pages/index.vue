@@ -24,8 +24,8 @@ export default {
     contentBlocks () {
       return this.$store.state.contentblocks.contentblocks.allContentblocks
     }
-  },
-  transition: 'tran'
+  }
+  // transition: 'tran'
 }
 </script>
 
